@@ -49,6 +49,17 @@ python app.py
 
 默认账号：admin / 123456
 
+## 项目截图
+
+### 登录页
+![登录页](screenshots/login.png)
+
+### 学生管理
+![学生管理](screenshots/students.png)
+
+### 成绩统计
+![成绩统计](screenshots/stats.png)
+
 ## 作者
 
 胡晓芳 - 宁夏大学 计算机科学与技术 硕士
