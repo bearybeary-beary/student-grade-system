@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>成绩管理</h3>
+
+<form method="post" class="row g-3 mt-2">
+  <div class="col-md-4">
+    <select name="student_id" class="form-select" required>
+      <option value="">选择学生</option>
+      {% for s in students %}
+        <option value="{{ s.id }}">{{ s.student_no }} {{ s.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-4">
+    <select name="course_id" class="form-select" required>
+      <option value="">选择课程</option>
+      {% for c in courses %}
+        <option value="{{ c.id }}">{{ c.course_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-2">
+    <input type="number" step="0.1" name="score" class="form-control" placeholder="分数" required>
+  </div>
+  <div class="col-md-2">
+    <button type="submit" class="btn btn-primary">录入成绩</button>
+  </div>
+</form>
+
+<table class="table table-bordered mt-3">
+  <thead>
+    <tr><th>ID</th><th>学号</th><th>姓名</th><th>课程</th><th>分数</th><th>操作</th></tr>
+  </thead>
+  <tbody>
+  {% for g in grades %}
+    <tr>
+      <td>{{ g.id }}</td>
+      <td>{{ g.student_no }}</td>
+      <td>{{ g.name }}</td>
+      <td>{{ g.course_name }}</td>
+      <td>{{ g.score }}</td>
+      <td>
+        <a href="{{ url_for('delete_grade', id=g.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('确定删除？')">删除</a>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="6" class="text-center">暂无成绩记录</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

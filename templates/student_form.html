@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>{{ '编辑学生' if student else '添加学生' }}</h3>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">学号</label>
+    <input type="text" name="student_no" class="form-control" value="{{ student.student_no if student else '' }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">姓名</label>
+    <input type="text" name="name" class="form-control" value="{{ student.name if student else '' }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">班级</label>
+    <input type="text" name="class_name" class="form-control" value="{{ student.class_name if student else '' }}">
+  </div>
+  <button type="submit" class="btn btn-primary">保存</button>
+  <a href="{{ url_for('students') }}" class="btn btn-secondary">返回</a>
+</form>
+{% endblock %}
